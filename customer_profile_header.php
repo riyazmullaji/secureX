@@ -73,7 +73,7 @@ if($_SESSION['customer_login'] != true)
             <a href="customer_pass_change.php"><li class="link3">Change Password</li></a>
             <a href="fund_transfer.php"><li class="link4">Fund Transfer</li></a>
             <a href="cust_statement.php"><li class="link5">Statement</li></a>
-            <a href="#"><li class="link6">Receive Money</li></a>
+            <a href="cust_recieve.php"><li class="link6">Receive Money</li></a>
             </ul>
             </div>
 
