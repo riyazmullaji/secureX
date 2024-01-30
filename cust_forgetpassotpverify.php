@@ -68,7 +68,8 @@ if(isset($_POST['verify-btn'])){
 			$textlocal = new Textlocal(false,false,$apikey);
 			$numbers = array($mob);
 			$sender = 'TXTLCL';
-			$message = 'Hello '.$cust_name.' your internet banking account password is : '.$pass'';
+			$message = "Hello $cust_name, your internet banking account password is: $pass";
+
 
 			try {
 				$result = $textlocal->sendSms($numbers, $message, $sender);
