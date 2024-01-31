@@ -1,0 +1,82 @@
+.cust_receive_container_head label {
+    /* //   background-color: blueviolet; */
+    display: block;
+    text-align: center;
+    margin-top: 1%;
+    /* //background-color: gray; */
+    font-size: 3vh;
+  }
+  
+  .cust_receive_container {
+    /* //background-color: burlywood; */
+    width: 95%;
+    margin: 2% auto;
+    height: 80%;
+    /* //overflow-y:auto; */
+    overflow-x: hidden;
+    border: 1px ligh black;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .cust_receive {
+    font-size: 3vh;
+    width: 100%;
+    /* //background-color: cadetblue; */
+    text-align: center;
+  }
+  .cust_receive table {
+    border-collapse: collapse;
+    margin: 1% auto;
+    /* // height: 2%; */
+    font-size: 2vh;
+    border-collapse: collapse;
+    border: 1px rgb(221, 221, 221);
+    /* //padding: 20px; */
+    text-align: center;
+  }
+  .cust_receive table th {
+    color: white;
+    height: 50px;
+    widows: 50px;
+    background-color: #005f7d;
+    border: 1px solid rgb(245, 245, 245);
+  }
+  
+  .cust_receive table tr:nth-child(even) {
+    background-color: rgb(242, 242, 242);
+  }
+  
+  .cust_receive table tr:nth-child(odd) {
+    background-color: white;
+  }
+  
+  .cust_receive table tr td {
+    border: 1px solid rgb(255, 255, 255);
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .cust_receive table tr {
+    background-color: blue;
+  }
+
+   .cust_receive table tr td form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cust_receive table tr td input[type="text"] {
+        margin-bottom: 5px;
+        padding: 5px;
+        width: 80%;
+    }
+    
+    .cust_receive table tr td button {
+        background-color: #4CAF50;
+        color: rgb(255, 255, 255);
+        padding: 4px 8px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+  

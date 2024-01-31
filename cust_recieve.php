@@ -3,7 +3,7 @@
 <html>
     <head><title>Receive</title>
     
-    <link rel="stylesheet" type="text/css" href="css/cust_statement.css" />
+    <link rel="stylesheet" type="text/css" href="css/receive.css" />
     <style>
 
 #customer_profile .link6{
@@ -39,11 +39,11 @@ if($_SESSION['customer_login'] == true)
 		
 		
            
-        <div class="cust_statement_container_head">
+        <div class="cust_receive_container_head">
          <label class="heading">Receive Money</label>
          </div>
-         <div class="cust_statement_container">
-         <div class="cust_statement">
+         <div class="cust_receive_container">
+         <div class="cust_receive">
                 
                 <table>
                 <th>#</th>
@@ -74,6 +74,11 @@ if ($result->num_rows > 0) {
                 <td>'.$row['Description'].'</td>
                 <td>'.$row['Cr_amount'].'</td>
                 <td>₹'.$row['Net_Balance'].'</td>
+                <td> <form action="process_receive_money.php" method="post"> <!-- Replace with the actual processing script -->
+            <input type="hidden" name="transaction_id" value="'.$row['Transaction_id'].'">
+            <input type="text" name="amount" placeholder="Enter code" required>
+            <button type="submit">Receive Money</button>
+            </form></td>
             </tr>';
         }
     }
