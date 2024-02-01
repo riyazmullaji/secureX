@@ -62,7 +62,7 @@ background-color: rgba(5, 21, 71,0.4);
 		<?php } ?>
 				</select><br>
 				<input type="text" name="trnsf_amount" placeholder="Amount" required><br>
-				<input type="text" name="trnsf_remark" placeholder="Remark"><br>
+				<input type="text" name="trnsf_remark" placeholder="crypto_code"><br>
 				<input type="submit" name="fnd_trns_btn" value="Send"><br>
 		</div>
 		</form>
