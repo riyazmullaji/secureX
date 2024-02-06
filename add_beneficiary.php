@@ -18,7 +18,9 @@ include 'customer_profile_header.php' ;
                 <option value=""disabled selected>Account type</option>
                 <option value="Saving">Saving</option>
                 <option value="Current">Current</option><br>
-        </select><br>
+            </select><br>
+            <input type="text" name="Secure_code" placeholder="Secure Code" required>
+        <br>
             <input type="submit" name="add_beneficiary_btn" value="Add"><br><br>
 
         </form>
@@ -37,6 +39,7 @@ if(isset($_POST['add_beneficiary_btn'])){
     $beneficiary_acno = $_POST['beneficiary_acno'];
     $ifsc = $_POST['Ifsc_code'];
     $beneficiary_acc_type = $_POST['beneficiary_acc_type'];
+    $Secure_code = $_POST['Secure_code'];
 
     session_start();
     include 'db_connect.php';
@@ -71,7 +74,7 @@ if(isset($_POST['add_beneficiary_btn'])){
             
                     $sql = "INSERT INTO beneficiary_$cust_id (Beneficiary_name,
                     Beneficiary_ac_no,IFSC_code,Account_type,Status,Date_added) 
-                    VALUE ('$beneficiary_name','$beneficiary_acno','$ifsc','$beneficiary_acc_type','ACTIVE','$_date_added')";
+                    VALUE ('$beneficiary_name','$beneficiary_acno','$ifsc','$beneficiary_acc_type','$Secure_code','$_date_added')";
                     if($conn->query($sql) == TRUE){
             
                         echo '<script>alert("Beneficiary Added Successfully")
@@ -80,7 +83,8 @@ if(isset($_POST['add_beneficiary_btn'])){
             
                     else{
             
-                        echo "Error inserting data: " . $conn->error;
+                        echo '<script>alert("Error inserting data: ' . $conn->error . '")</script>';
+
             
                        } 
 
