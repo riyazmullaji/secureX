@@ -74,11 +74,10 @@ if ($result->num_rows > 0) {
                 <td>'.$row['Description'].'</td>
                 <td>'.$row['Cr_amount'].'</td>
                 <td>₹'.$row['Net_Balance'].'</td>
-                <td> <form action="process_receive_money.php" method="post"> <!-- Replace with the actual processing script -->
-            <input type="hidden" name="transaction_id" value="'.$row['Transaction_id'].'">
-            <input type="text" name="amount" placeholder="Enter code" required>
-            <button type="submit">Receive Money</button>
-            </form></td>
+                <td> <form method="post">
+                <input type="text" name="Secure_code" placeholder="Enter SecureCode">
+                <input type="submit" name="receive-btn" value="Receive">
+                </form></td>
             </tr>';
         }
     }
