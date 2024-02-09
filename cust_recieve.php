@@ -24,40 +24,57 @@
         </div>
         <div class="cust_receive_container">
             <div class="cust_receive">
-                <table>
-                    <th>#</th>
-                    <th>Date</th>
-                    <th>Transaction Id</th>
-                    <th>Description</th>
-                    <th>Cr</th>
-                    <th>Amount</th>
-                    <th>Receive Money</th>
-                    <?php
-$cust_id = $_SESSION['customer_Id'];
-$sql = "SELECT * FROM passbook_$cust_id WHERE Dr_amount = '0' AND Description NOT LIKE 'Cash Deposit%' AND Description != 'Account Opening' ORDER BY Id DESC";
+            <?php
+$customer_id = $_SESSION['customer_Id'];
+$sql = "SELECT * FROM pending_transfers_$customer_id WHERE status = 'pending' ORDER BY id DESC";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
+    // Display the table if there are pending transactions
+    echo '
+    <table>
+        <th>#</th>
+        <th>Date</th>
+        <th>Transaction Id</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Action</th>';
+
     $Sl_no = 1;
     // Loop through each row in the result set
     while ($row = $result->fetch_assoc()) {
-        // Check if Dr_amount is equal to zero and exclude certain descriptions
-        if ($row['Dr_amount'] == '0' && strpos($row['Description'], 'Cash Deposit') !== 0 && $row['Description'] != 'Account Opening') {
-            // Output the data in HTML table row format
-            echo '
-            <tr>
-                <td>' . $Sl_no++ . '</td>
-                <td>' . $row['Transaction_date'] . '</td>
-                <td>' . $row['Transaction_id'] . '</td>
-                <td>' . $row['Description'] . '</td>
-                <td>' . $row['Cr_amount'] . '</td>
-                <td>₹' . $row['Net_Balance'] . '</td>
-                <td><button class="receive-btn" onclick="promptForSecureCode(' . $row['Transaction_id'] . ')">Receive</button></td>
-            </tr>';
-        }
+        // Output the data in HTML table row format
+        echo '
+        <tr>
+            <td>' . $Sl_no++ . '</td>
+            <td>' . $row['Date_added'] . '</td>
+            <td>' . $row['Transaction_id'] . '</td>
+            <td>' . $row['Description'] . '</td>
+            <td>₹' . $row['amount'] . '</td>
+            <td><button class="receive-btn" onclick="promptForSecureCode(' . $row['id'] . ', ' . $row['amount'] . ')">Receive</button></td>
+        </tr>';
     }
+
+    echo '</table>';
+} else {
+    // Display a message if there are no pending transactions
+    echo '<p>No pending transactions at the moment.</p>';
 }
 ?>
+
+<script>
+    function promptForSecureCode(id, amount) {
+        var secureCode = prompt("Enter Secure Code for Transaction ID: " + id + "\nAmount: ₹" + amount);
+        // Add logic to handle the secure code, e.g., send it to the server for verification
+        if (secureCode) {
+            // You can perform an AJAX request or other logic here to handle the secure code
+            // Example: sendSecureCodeToServer(id, secureCode);
+            alert("Secure Code entered: " + secureCode);
+        }
+    }
+</script>
+
+
 
                 </table>
             </div>

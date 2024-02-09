@@ -118,6 +118,17 @@
 					Account_type VARCHAR(255) NULL,
 					Status VARCHAR(255) NULL,
 					Date_added VARCHAR(255) NULL)";
+      
+					//Create pending transfers table of the customer
+	                 $sql4 = "CREATE TABLE pending_transfers_$customer_id (id INT(255) AUTO_INCREMENT PRIMARY KEY, 
+					Beneficiary_name VARCHAR(255) NULL,
+					Beneficiary_ac_no VARCHAR(255) NULL,
+					IFSC_code VARCHAR(255) NULL,
+					Account_type VARCHAR(255) NULL,
+					amount DECIMAL(10, 2),
+                    secure_code VARCHAR(255),
+                    status ENUM('pending', 'completed') DEFAULT 'pending',
+					Date_added VARCHAR(255) NULL)";
 
 					
 
