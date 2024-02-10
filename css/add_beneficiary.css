@@ -1,5 +1,5 @@
 .add_beneficiary_container {
-  background-color: #c5d9e2;
+  background-color: #fbe3e8;
   width: 30%;
   margin: 5% auto;
   border-radius: 5px;
@@ -24,7 +24,7 @@ select {
 .add_beneficiary_container input[type="submit"] {
   color: white;
   font-size: 24px;
-  background-color: #005f7d;
+  background-color: #e4decd;
   border-radius: 3px;
   box-shadow: 0px 2px black;
   border: 0px;

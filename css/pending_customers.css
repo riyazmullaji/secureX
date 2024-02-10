@@ -24,7 +24,7 @@
   font-size: 2.5vh;
   border: 0px;
   /* //border-top-right-radius: 10px; */
-  background-color: #005f7d;
+  background-color: #e4decd;
   color: white;
   padding: 1.5%;
   width: 10%;
@@ -56,7 +56,7 @@ table {
 table th {
   color: white;
   height: 50px;
-  background-color: #005f7d;
+  background-color: #e4decd;
 }
 
 tr:nth-child(even) {

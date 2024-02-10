@@ -1,5 +1,5 @@
 .debit_card_form_container {
-  background-color: #c5d9e2;
+  background-color: #fbe3e8;
   width: 35%;
   margin: 5% auto;
   /* // border-radius: 5px; */
@@ -9,7 +9,7 @@
 .debit_card_form_container h3 {
   text-align: center;
   border: 1px solid rgba(44, 78, 134, 0.5);
-  background-color: #c5d9e2;
+  background-color: #fbe3e8;
   font-size: 3.5vh;
   color: rgb(44, 78, 134);
   font-weight: 500;

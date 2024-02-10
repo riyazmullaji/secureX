@@ -11,7 +11,7 @@
 }
 
 .welcome {
-  background-color: #c5d9e2;
+  background-color: #fbe3e8;
   padding: 33px;
   box-shadow: 0px 1px 3px black;
   color: black;
@@ -38,11 +38,11 @@
 
 .customer_details label {
   border: 1px solid rgba(0, 0, 0, 0.2);
-  background-color: cyan;
+ background-color: #82716e;
   padding: 10px;
 }
 .profile_nav {
-  background-color: #005f7d;
+  background-color: #e4decd;
   overflow: auto;
   width: 100%;
   margin-top: 5px;

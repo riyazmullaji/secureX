@@ -133,7 +133,8 @@
 					
 
 					//If all the query is TRUE then issue commit else rollback 
-					if($conn->query($sql1) == TRUE && $conn->query($sql2) == TRUE  && $conn->query($sql3) == TRUE  && $conn->query($sql4) == TRUE && $conn->query($sql5) == TRUE)){
+					if ($conn->query($sql1) === TRUE && $conn->query($sql2) === TRUE && $conn->query($sql3) === TRUE && $conn->query($sql4) === TRUE && $conn->query($sql5) === TRUE) {
+
 						
 						$transaction_id = mt_rand(100,999).mt_rand(1000,9999).mt_rand(10,99);
 

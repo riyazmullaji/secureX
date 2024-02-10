@@ -73,7 +73,7 @@ if(isset($_POST['add_beneficiary_btn'])){
                 $_date_added = date("d/m/y h:i:s A");
             
                     $sql = "INSERT INTO beneficiary_$cust_id (Beneficiary_name,
-                    Beneficiary_ac_no,IFSC_code,Account_type,Status,Date_added) 
+                    Beneficiary_ac_no,IFSC_code,Account_type,secure_code,Date_added) 
                     VALUE ('$beneficiary_name','$beneficiary_acno','$ifsc','$beneficiary_acc_type','$Secure_code','$_date_added')";
                     if($conn->query($sql) == TRUE){
             
