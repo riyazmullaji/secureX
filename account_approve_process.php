@@ -116,11 +116,11 @@
 					Beneficiary_ac_no VARCHAR(255) NULL,
 					IFSC_code VARCHAR(255) NULL,
 					Account_type VARCHAR(255) NULL,
-					Status VARCHAR(255) NULL,
+					secure_code VARCHAR(255) NULL,
 					Date_added VARCHAR(255) NULL)";
       
 					//Create pending transfers table of the customer
-	                 $sql4 = "CREATE TABLE pending_transfers_$customer_id (id INT(255) AUTO_INCREMENT PRIMARY KEY, 
+	                 $sql5 = "CREATE TABLE pending_transfers_$customer_id (id INT(255) AUTO_INCREMENT PRIMARY KEY, 
 					Beneficiary_name VARCHAR(255) NULL,
 					Beneficiary_ac_no VARCHAR(255) NULL,
 					IFSC_code VARCHAR(255) NULL,
@@ -133,7 +133,7 @@
 					
 
 					//If all the query is TRUE then issue commit else rollback 
-					if($conn->query($sql1) == TRUE && $conn->query($sql2) == TRUE  && $conn->query($sql3) == TRUE  && $conn->query($sql4) == TRUE){
+					if($conn->query($sql1) == TRUE && $conn->query($sql2) == TRUE  && $conn->query($sql3) == TRUE  && $conn->query($sql4) == TRUE && $conn->query($sql5) == TRUE)){
 						
 						$transaction_id = mt_rand(100,999).mt_rand(1000,9999).mt_rand(10,99);
 
