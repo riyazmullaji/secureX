@@ -126,7 +126,6 @@
 					IFSC_code VARCHAR(255) NULL,
 					Account_type VARCHAR(255) NULL,
 					amount DECIMAL(10, 2),
-                    secure_code VARCHAR(255),
                     status ENUM('pending', 'completed') DEFAULT 'pending',
 					Date_added VARCHAR(255) NULL)";
 
