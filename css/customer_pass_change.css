@@ -4,7 +4,7 @@
 }
 
 .cust_passchng_container {
-  background-color: #fbe3e8;
+  background-color: #74899e;
   width: 30%;
   margin: 5% auto;
   border-radius: 5px;
@@ -21,8 +21,7 @@
 .cust_passchng_container input[type="submit"] {
   color: white;
   font-size: 15px;
-  background-color: #e4decd;
-  border-radius: 3px;
+ background-color:  #333c5e;  border-radius: 3px;
   box-shadow: 0px 3px black;
   border: 0px;
   display: block;

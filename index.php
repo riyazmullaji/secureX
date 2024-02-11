@@ -1,5 +1,5 @@
 <html>
-<title>Online Banking System</title>
+<title>Securexx</title>
 <head>
    <link rel="stylesheet" type="text/css" href="css/index.css">
    <link rel="shortcut icon" href="img/chase.jpg">

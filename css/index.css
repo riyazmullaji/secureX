@@ -55,7 +55,7 @@ body {
 
 .newsroom {
   box-shadow: 2px 2px 50px black;
-  background-color: #fcf1ca;
+ 
 }
 
 .marquee_news {
@@ -95,7 +95,7 @@ body {
   width: 55%;
   float: left;
   padding-bottom: 5px;
-  background-color: #fbe3e8;
+  background-color: #74899e;
   border-bottom: 2px solid black;
 }
 
@@ -147,7 +147,7 @@ body {
 .ebanking_options {
   position: absolute;
   display: none;
-  background-color: #fbe3e8;
+  background-color: #74899e;
   width: 180%;
   border: 1px solid black;
   box-shadow: 2px 2px 40px rgb(45, 71, 112);
@@ -206,7 +206,7 @@ body {
   margin-bottom: 30px;
   margin-top: 30px;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  background-color: #fbe3e8;
+  background-color: #74899e;
   padding: 30px;
   box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.6);
   /* //  border-radius: 15px; */
@@ -219,8 +219,7 @@ body {
 }
 .disclaimer p {
   font-size: 11px;
-  background-color: #e4decd;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+ background-color:  #333c5e;  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
   line-height: 25px;
   text-align: justify;
   background-color: #f5f5f5;

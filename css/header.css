@@ -7,7 +7,7 @@ body {
 }
 .header_main {
   width: 100%;
-  background-color: #003344;
+background-color:  #333c5e;
 }
 .navbar ul li a {
   padding-left: 10px;
@@ -20,7 +20,7 @@ body {
 }
 
 .navbar ul li a:hover {
-  color: #17c3ba;
+  color: #333c5e;
 }
 
 .navbar ul {
@@ -40,7 +40,7 @@ body {
 }
 
 .logo-name {
-  background-color: #004156;
+  background-color: #333c5e;
   height: 100px;
 }
 .name h5 {
@@ -79,7 +79,7 @@ body {
 }
 
 .dif_banking {
-  background-color: #e4decd;
+  background-color: #333c5e;
   font-size: 14px;
   color: #fff;
   padding-left: 5%;
@@ -98,28 +98,24 @@ body {
   /* // background-color: black; */
 }
 .dif_banking a:hover {
-  color: #17c3ba;
+  color:  #333c5e;
 }
 .retail_banking {
   float: left;
   text-align: center;
-  border-right: 1px solid #475f82;
-}
+ background-color:  #333c5e;}
 .corporate_banking {
   float: left;
   text-align: center;
-  border-right: 1px solid #475f82;
-}
+ background-color:  #333c5e;}
 .international_banking {
   float: left;
   text-align: center;
-  border-right: 1px solid #475f82;
-}
+ background-color:  #333c5e;}
 .tax {
   float: left;
   text-align: center;
-  border-right: 1px solid #475f82;
-}
+ background-color:  #333c5e;}
 .bank_service {
   float: left;
   text-align: center;

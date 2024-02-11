@@ -10,8 +10,7 @@ table {
 table th {
   color: white;
   height: 50px;
-  background-color: #e4decd;
-}
+ background-color:  #333c5e;}
 
 tr:nth-child(even) {
   background-color: rgb(242, 242, 242);
@@ -29,8 +28,7 @@ td {
 input[name="delete_beneficiary"] {
   color: white;
   font-size: 15px;
-  background-color: #e4decd;
-  border-radius: 3px;
+ background-color:  #333c5e;  border-radius: 3px;
   box-shadow: 0px 2px black;
   border: 0px;
   display: block;
@@ -44,7 +42,7 @@ input[name="delete_beneficiary"] {
 input[name="go_back"] {
   color: white;
   font-size: 15px;
-  background-color: #fbe3e8;
+  background-color: #74899e;
   border-radius: 3px;
   box-shadow: 0px 2px black;
   border: 0px;

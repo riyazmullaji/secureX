@@ -18,8 +18,7 @@ table {
 table th {
   color: white;
   height: 50px;
-  background-color: #e4decd;
-}
+ background-color:  #333c5e;}
 
 tr:nth-child(even) {
   background-color: rgb(242, 242, 242);

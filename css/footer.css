@@ -110,8 +110,7 @@ footer .copyright {
   /* border-top: 1px solid #475f81; */
   font-family: verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #bed2dd;
-  background-color: #e4decd;
-  clear: both;
+ background-color:  #333c5e;  clear: both;
   text-align: center;
   width: 100%;
   font-size: 14px;
@@ -120,7 +119,7 @@ footer .copyright {
 }
 
 footer .bestview {
-  background-color: #003344;
+background-color: #e4decd;
   font-family: verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #bed2dd;
   clear: both;
