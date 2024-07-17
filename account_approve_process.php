@@ -111,7 +111,7 @@
 					Remark VARCHAR(255) NULL)";
 
 					//Create Beneficiary table of the customer
-					$sql4 = "CREATE TABLE beneficiary_$customer_id (id INT(255) AUTO_INCREMENT PRIMARY KEY, 
+					$sql4 = "CREATE TABLE beneficiary_$acc_no (id INT(255) AUTO_INCREMENT PRIMARY KEY, 
 					Beneficiary_name VARCHAR(255) NULL,
 					Beneficiary_ac_no VARCHAR(255) NULL,
 					IFSC_code VARCHAR(255) NULL,
@@ -120,12 +120,11 @@
 					Date_added VARCHAR(255) NULL)";
       
 					//Create pending transfers table of the customer
-	                 $sql5 = "CREATE TABLE pending_transfers_$customer_id (id INT(255) AUTO_INCREMENT PRIMARY KEY, 
+	                 $sql5 = "CREATE TABLE pending_transfers_$acc_no (id INT(255) AUTO_INCREMENT PRIMARY KEY, 
+					Transaction_id VARCHAR(255) NULL,
 					Beneficiary_name VARCHAR(255) NULL,
 					Beneficiary_ac_no VARCHAR(255) NULL,
-					IFSC_code VARCHAR(255) NULL,
-					Account_type VARCHAR(255) NULL,
-					amount DECIMAL(10, 2),
+					Amount DECIMAL(10, 2),
                     status ENUM('pending', 'completed') DEFAULT 'pending',
 					Date_added VARCHAR(255) NULL)";
 

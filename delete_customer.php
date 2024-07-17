@@ -57,7 +57,7 @@ if($result->num_rows > 0){
 
     $conn->autocommit(FALSE);
 
-    $sql1 = "DROP TABLE passbook_$cust_id, beneficiary_$cust_id";
+    $sql1 = "DROP TABLE passbook_$cust_id, beneficiary_$acc_no";
     $sql2 = "DELETE FROM bank_customers WHERE  Account_no='$acc_no'";
 
     if( ($conn->query($sql1)  && $conn->query($sql2)) == TRUE ){

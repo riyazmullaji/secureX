@@ -12,7 +12,8 @@ if($_SESSION['customer_login'] == FALSE){
 include 'db_connect.php';
 
 $cust_id = $_SESSION['customer_Id']; 
-$sql = "SELECT * from beneficiary_$cust_id";
+$acc_no = $_SESSION['Account_No'];
+$sql = "SELECT * from beneficiary_$acc_no";
 $result1 = $conn->query($sql);
 if($result1->num_rows <= 0){
 
@@ -45,7 +46,7 @@ if($result1->num_rows <= 0){
     include 'db_connect.php';
 
     $cust_id = $_SESSION['customer_Id']; 
-    $sql = "SELECT * from beneficiary_$cust_id";
+    $sql = "SELECT * from beneficiary_$acc_no";
     $result = $conn->query($sql);
     if($result->num_rows > 0){
         $Sl_no = 1 ;
@@ -111,7 +112,7 @@ if(isset($_POST['delete_beneficiary'])){
 
         $row_to_delete_id = $_POST['radio'];
 
-        $sql = "DELETE from beneficiary_$cust_id WHERE id = $row_to_delete_id ";
+        $sql = "DELETE from beneficiary_$acc_no WHERE id = $row_to_delete_id ";
         if($conn->query($sql)  == TRUE){
     
 

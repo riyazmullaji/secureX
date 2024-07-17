@@ -44,6 +44,7 @@ if(isset($_POST['add_beneficiary_btn'])){
     session_start();
     include 'db_connect.php';
     $cust_id =  $_SESSION['customer_Id'];
+    $acc_no = $_SESSION['Account_No'];
 
 
     $sql = "SELECT Account_no,IFSC_Code FROM bank_customers WHERE Account_no = $beneficiary_acno";
@@ -72,7 +73,7 @@ if(isset($_POST['add_beneficiary_btn'])){
                 date_default_timezone_set('Asia/Kolkata'); 
                 $_date_added = date("d/m/y h:i:s A");
             
-                    $sql = "INSERT INTO beneficiary_$cust_id (Beneficiary_name,
+                    $sql = "INSERT INTO beneficiary_$acc_no (Beneficiary_name,
                     Beneficiary_ac_no,IFSC_code,Account_type,secure_code,Date_added) 
                     VALUE ('$beneficiary_name','$beneficiary_acno','$ifsc','$beneficiary_acc_type','$Secure_code','$_date_added')";
                     if($conn->query($sql) == TRUE){

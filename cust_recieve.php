@@ -1,96 +1,145 @@
-<html>
-    <head>
-        <title>Receive</title>
-        <link rel="stylesheet" type="text/css" href="css/receive.css" />
-        <style>
-            #customer_profile .link6 {
-                background-color: rgba(5, 21, 71, 0.4);
-            }
-        </style>
-        <?php include 'header.php'; ?>
-    </head>
-    <body>
-        <?php include 'customer_profile_header.php'; ?>
-        <?php
-        if ($_SESSION['customer_login'] == true) {
-
-        } else {
-            header('location:customer_login.php');
-        }
-        ?>
-
-        <div class="cust_receive_container_head">
-            <label class="heading">Receive Money</label>
-        </div>
-        <div class="cust_receive_container">
-            <div class="cust_receive">
-            <?php
-$customer_id = $_SESSION['customer_Id'];
-$sql = "SELECT * FROM pending_transfers_$customer_id WHERE status = 'pending' ORDER BY id DESC";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // Display the table if there are pending transactions
-    echo '
-    <table>
-        <th>#</th>
-        <th>Date</th>
-        <th>Transaction Id</th>
-        <th>Description</th>
-        <th>Amount</th>
-        <th>Action</th>';
-
-    $Sl_no = 1;
-    // Loop through each row in the result set
-    while ($row = $result->fetch_assoc()) {
-        // Output the data in HTML table row format
-        echo '
-        <tr>
-            <td>' . $Sl_no++ . '</td>
-            <td>' . $row['Date_added'] . '</td>
-            <td>' . $row['Transaction_id'] . '</td>
-            <td>' . $row['Description'] . '</td>
-            <td>₹' . $row['amount'] . '</td>
-            <td><button class="receive-btn" onclick="promptForSecureCode(' . $row['id'] . ', ' . $row['amount'] . ')">Receive</button></td>
-        </tr>';
-    }
-
-    echo '</table>';
-} else {
-    // Display a message if there are no pending transactions
-    echo '<p>No pending transactions at the moment.</p>';
+<?php
+ob_start();
+include 'header.php';
+include 'customer_profile_header.php' ;
+if($_SESSION['customer_login'] != true)
+{
+	header('location:customer_login.php');
+	return 0;
 }
+
+$acc_no = $_SESSION['Account_No'];
 ?>
 
-<script>
-    function promptForSecureCode(id, amount) {
-        var secureCode = prompt("Enter Secure Code for Transaction ID: " + id + "\nAmount: ₹" + amount);
-        // Add logic to handle the secure code, e.g., send it to the server for verification
-        if (secureCode) {
-            // You can perform an AJAX request or other logic here to handle the secure code
-            // Example: sendSecureCodeToServer(id, secureCode);
-            alert("Secure Code entered: " + secureCode);
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receive</title>
+    <link rel="stylesheet" type="text/css" href="css/receive.css"/>
+    <style>
+        #customer_profile .link6 {
+            background-color: rgba(5, 21, 71, 0.4);
         }
-    }
-</script>
+        
+        .cust_receive_form {
+            text-align: center;
+            margin-top: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            background-color: rgba(0, 0, 0, 0.2);
+            width: 350px;
+            padding: 20px;
+            margin: 0 auto;
+            box-shadow: 2px 2px 5px black;
+        }
 
+        .cust_receive_form h2 {
+            font-size: 2.5vh;
+        }
 
+        .cust_receive_form form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 2px 2px 2px rgba(126, 126, 126, 0.5);
+        }
 
-                </table>
-            </div>
-        </div>
-        <script>
-            function promptForSecureCode(transactionId) {
-                var secureCode = prompt("Enter SecureCode:");
-                if (secureCode !== null) {
-                    // Perform further processing or submit the form with secureCode and transactionId
-                    // You can use AJAX to submit the form data to the server for verification
-                    // For simplicity, let's just log the values for now
-                    console.log("Transaction ID:", transactionId);
-                    console.log("SecureCode:", secureCode);
+        .cust_receive_form form label {
+            margin-bottom: 5px;
+            font-family: verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 11px;
+            font-weight: bold;
+            color: #4a60d0;
+        }
+
+        .cust_receive_form form input[type="text"], 
+        .cust_receive_form form input[type="password"] {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 200px;
+            border: 1px solid white;
+            border-bottom: 2px solid rgba(68, 68, 68, 0.3);
+            border-radius: 4px;
+            color: rgba(44, 44, 44, 0.9);
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .cust_receive_form form .receive-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .cust_receive_form form .receive-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cust_receive_container_head">
+        <label class="heading">Receive Money</label>
+    </div>
+    <div class="cust_receive_container">
+        <div class="cust_receive">
+        <?php
+            $sql = "SELECT * FROM pending_transfers_$acc_no WHERE status = 'pending' ORDER BY id DESC";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                echo '
+                <table>
+                    <th>#</th>
+                    <th>Transaction ID</th>
+                    <th>Beneficiary Name</th>
+                    <th>Beneficiary Ac. Number</th>
+                    <th>Amount</th>
+                    <th>Date</th>';
+
+                $Sl_no = 1;
+                while ($row = $result->fetch_assoc()) {
+                    echo '
+                    <tr>
+                        <td>' . $Sl_no++ . '</td>
+                        <td>' . $row['Transaction_id'] . '</td>
+                        <td>' . $row['Beneficiary_name'] . '</td>
+                        <td>' . $row['Beneficiary_ac_no'] . '</td>
+                        <td>₹' . $row['Amount'] . '</td>
+                        <td>' . $row['Date_added'] . '</td>
+                    </tr>';
                 }
+                echo '</table>';
+            } else {
+                echo '<p>No pending transactions at the moment.</p>';
             }
-        </script>
-        <?php include 'footer.php'; ?>
-    </body>
+            ?>
+        </div>
+
+        <div class="cust_receive_form">
+            <h2>Receive</h2>
+            <form method="post">
+                <label for="Transaction_id">Transaction ID</label>
+                <input type="text" name="Transaction_id" required />
+                
+                <label for="beneficiary_ac_no">Beneficiary Account Number</label>
+                <input type="text" name="beneficiary_ac_no" required />
+                
+                <label for="secure_code">Secure Code</label>
+                <input type="password" name="secure_code" required />
+                
+                <input class="receive-btn" type="submit" name="receive-btn" value="RECEIVE" />
+            </form>
+        </div>
+    </div>
+</body>
 </html>
+
+<?php include 'cust_recieve_process.php'?>

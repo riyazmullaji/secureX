@@ -52,6 +52,7 @@ if (isset($_POST['verify-btn'])) {
             $row_receiver = $result_receiver->fetch_assoc();
             $receiver_custmr_id = $row_receiver['Customer_ID'];
             $receiver_name = $row_receiver['Username'];
+            $receiver_ac = $row_receiver['Account_no'];
             $receiver_ifsc = $row_receiver['IFSC_Code'];
             $receiver_mob = $row_receiver['Mobile_no'];
             $receiver_netbal = $row_receiver['Current_Balance'] + $trnsf_amount;
@@ -74,11 +75,14 @@ if (isset($_POST['verify-btn'])) {
                 // Set autocommit to off
                 $conn->autocommit(FALSE);
 
+                //generate transaction id
+                $transaction_id = mt_rand(100,999).mt_rand(1000,9999).mt_rand(10,99);
+
                 // Insert into pending_transactions_.$receiver_custmr_id
-                $sql_pending = "INSERT INTO pending_transfers_" . $receiver_custmr_id . "
-                                    (Beneficiary_name, Beneficiary_ac_no, IFSC_code, Account_type, amount, status, Date_added)
+                $sql_pending = "INSERT INTO pending_transfers_" . $receiver_ac . "
+                                    (Transaction_id, Beneficiary_name, Beneficiary_ac_no, amount, status, Date_added)
                                 VALUES
-                                    ('$sender_name', '$sender_ac_no', '$sender_ifsc', 'pending', '$trnsf_amount', 'pending', NOW())";
+                                    ('$transaction_id','$sender_name', '$sender_ac_no', '$trnsf_amount', 'pending', NOW())";
 
                 if ($conn->query($sql_pending) === TRUE) {
 

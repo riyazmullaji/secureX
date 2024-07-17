@@ -44,7 +44,7 @@
     </div>
     
     <div class="bestview">
-    <span>Site best viewed at 1024 x 768 resolution in Internet Explorer 10+, Google Chrome 49+, Firefox 45+ and Safari 6+</span>
+    <span>Made By Riyaz+</span>
     
     </div>
 

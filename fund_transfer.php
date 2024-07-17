@@ -49,7 +49,8 @@ background-color: rgba(5, 21, 71,0.4);
 
 		include 'db_connect.php';
 		$cust_id = $_SESSION['customer_Id']; 
-		$sql = "SELECT * from beneficiary_$cust_id ";
+		$acc_no = $_SESSION['Account_No'];
+		$sql = "SELECT * from beneficiary_$acc_no ";
 		$result = $conn->query($sql);
 		while($row = $result->fetch_assoc()){
 							
@@ -62,7 +63,7 @@ background-color: rgba(5, 21, 71,0.4);
 		<?php } ?>
 				</select><br>
 				<input type="text" name="trnsf_amount" placeholder="Amount" required><br>
-				<input type="text" name="trnsf_remark" placeholder="remark"><br>
+				<input type="text" name="trnsf_remark" placeholder="Remark" required><br>
 				<input type="submit" name="fnd_trns_btn" value="Send"><br>
 		</div>
 		</form>

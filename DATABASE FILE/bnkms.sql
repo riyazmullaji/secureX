@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2021 at 12:24 PM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: Jul 17, 2024 at 05:33 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -31,13 +32,7 @@ CREATE TABLE `atm` (
   `cust_name` varchar(255) NOT NULL,
   `account_no` int(10) NOT NULL,
   `atm_status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `atm`
---
-
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -49,7 +44,7 @@ CREATE TABLE `bank_customers` (
   `Id` int(100) NOT NULL,
   `Username` varchar(20) DEFAULT NULL,
   `Password` varchar(15) DEFAULT NULL,
-  `Customer_Photo` longblob,
+  `Customer_Photo` longblob DEFAULT NULL,
   `Photo_name` varchar(500) DEFAULT NULL,
   `Customer_ID` varchar(20) DEFAULT NULL,
   `Gender` varchar(10) NOT NULL,
@@ -66,7 +61,7 @@ CREATE TABLE `bank_customers` (
   `PAN` varchar(10) DEFAULT NULL,
   `CITIZENSHIP` varchar(50) DEFAULT NULL,
   `Current_Balance` float(100,2) DEFAULT NULL,
-  `LastTransaction` int(20) DEFAULT '0',
+  `LastTransaction` int(20) DEFAULT 0,
   `Mobile_no` varchar(20) DEFAULT NULL,
   `Email_ID` varchar(50) DEFAULT 'Nil',
   `Debit_Card_No` varchar(50) DEFAULT NULL,
@@ -80,13 +75,19 @@ CREATE TABLE `bank_customers` (
   `Ac_Opening_Date` varchar(255) DEFAULT NULL,
   `Account_Status` varchar(10) NOT NULL,
   `Account_type` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `bank_customers`
 --
 
+INSERT INTO `bank_customers` (`Id`, `Username`, `Password`, `Customer_Photo`, `Photo_name`, `Customer_ID`, `Gender`, `Landline_no`, `Home_Addr`, `Office_Addr`, `Country`, `State`, `City`, `Pin_code`, `Account_no`, `Branch`, `IFSC_Code`, `PAN`, `CITIZENSHIP`, `Current_Balance`, `LastTransaction`, `Mobile_no`, `Email_ID`, `Debit_Card_No`, `Debit_Card_Pin`, `CVV`, `DOB`, `Area_Loc`, `Nominee_name`, `Nominee_ac_no`, `Last_Login`, `Ac_Opening_Date`, `Account_Status`, `Account_type`) VALUES
+(17, 'virat kohli', '1234567', NULL, NULL, '1011407', 'Male', '123', 'mumbai', 'india', 'India', 'Maharashtra', 'Thane', '400605', '1011821011407', 'Demo Branch ', '1011', '123', '123', NULL, 0, '9867237864', 'virat@gmail.com', '421352361357', 7895, NULL, '2000-12-18', 'mumbai', '', '', '04/07/24 03:39:44 PM', '04/07/24 12:44:03 AM', 'ACTIVE', 'Saving'),
+(18, 'rohit sharma', 'password', NULL, NULL, '1011257', 'Male', '123', 'mumbai', 'india', 'India', 'Maharashtra', 'Thane', '400605', '1011961011257', 'Demo Branch ', '1011', '123', '123', 10000.00, 0, '9867237864', 'rohit@gmail.com', '421361463498', 7433, NULL, '2000-12-18', 'mumbai', '', '', '04/07/24 03:20:23 PM', '04/07/24 03:16:08 PM', 'ACTIVE', 'Saving'),
+(19, 'MS Dhoni', 'password', NULL, NULL, '1011745', 'Male', '123', 'mumbai', 'india', 'India', 'Delhi', 'Nerul', '400605', '101171011745', 'Demo Branch ', '1011', '123', '123', 9957.00, 0, '9867237864', 'rohit@gmail.com', '421384669049', 6713, NULL, '2000-12-07', 'mumbai', '', '', '04/07/24 11:53:48 PM', '04/07/24 08:55:06 PM', 'ACTIVE', 'Saving'),
+(20, 'Riyaz', '123456789', NULL, NULL, '1011304', 'Male', '123', 'mumbai', 'india', 'India', 'Maharashtra', 'Thane', '400605', '1011491011304', 'Demo Branch ', '1011', '123', '123', 10043.00, 0, '9867237864', 'rohit@gmail.com', '421360755358', 1798, NULL, '1111-11-11', 'mumbai', '', '', '04/07/24 09:06:55 PM', '04/07/24 09:03:11 PM', 'ACTIVE', 'Saving');
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `bank_staff`
@@ -106,160 +107,62 @@ CREATE TABLE `bank_staff` (
   `PAN` varchar(50) DEFAULT NULL,
   `Home_addr` varchar(50) DEFAULT NULL,
   `Last_login` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `bank_staff`
 --
 
-
---
-
-CREATE TABLE `beneficiary_1010112` (
-  `id` int(255) NOT NULL,
-  `Beneficiary_name` varchar(255) DEFAULT NULL,
-  `Beneficiary_ac_no` varchar(255) DEFAULT NULL,
-  `IFSC_code` varchar(255) DEFAULT NULL,
-  `Account_type` varchar(255) DEFAULT NULL,
-  `Status` varchar(255) DEFAULT NULL,
-  `Date_added` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table `beneficiary_1010112`
---
-
-
-
---
--- Table structure for table `beneficiary_1011046`
---
-
-CREATE TABLE `beneficiary_1011046` (
-  `id` int(255) NOT NULL,
-  `Beneficiary_name` varchar(255) DEFAULT NULL,
-  `Beneficiary_ac_no` varchar(255) DEFAULT NULL,
-  `IFSC_code` varchar(255) DEFAULT NULL,
-  `Account_type` varchar(255) DEFAULT NULL,
-  `Status` varchar(255) DEFAULT NULL,
-  `Date_added` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table `beneficiary_1011046`
---
-
-
-
---
--- Table structure for table `beneficiary_1011426`
---
-
-CREATE TABLE `beneficiary_1011426` (
-  `id` int(255) NOT NULL,
-  `Beneficiary_name` varchar(255) DEFAULT NULL,
-  `Beneficiary_ac_no` varchar(255) DEFAULT NULL,
-  `IFSC_code` varchar(255) DEFAULT NULL,
-  `Account_type` varchar(255) DEFAULT NULL,
-  `Status` varchar(255) DEFAULT NULL,
-  `Date_added` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `beneficiary_1011426`
---
-
-
---
--- Table structure for table `beneficiary_1011439`
---
-
-CREATE TABLE `beneficiary_1011439` (
-  `id` int(255) NOT NULL,
-  `Beneficiary_name` varchar(255) DEFAULT NULL,
-  `Beneficiary_ac_no` varchar(255) DEFAULT NULL,
-  `IFSC_code` varchar(255) DEFAULT NULL,
-  `Account_type` varchar(255) DEFAULT NULL,
-  `Status` varchar(255) DEFAULT NULL,
-  `Date_added` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `beneficiary_1011439`
---
-
-
---
--- Table structure for table `beneficiary_1011722`
---
-
-CREATE TABLE `beneficiary_1011722` (
-  `id` int(255) NOT NULL,
-  `Beneficiary_name` varchar(255) DEFAULT NULL,
-  `Beneficiary_ac_no` varchar(255) DEFAULT NULL,
-  `IFSC_code` varchar(255) DEFAULT NULL,
-  `Account_type` varchar(255) DEFAULT NULL,
-  `Status` varchar(255) DEFAULT NULL,
-  `Date_added` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `bank_staff` (`Id`, `staff_name`, `staff_id`, `Password`, `Mobile_no`, `Email_id`, `Gender`, `Department`, `DOB`, `CITIZENSHIP`, `PAN`, `Home_addr`, `Last_login`) VALUES
+(1, 'Piyush', '210001', 'password', '7412225696', 'piyush@gmail.com', 'Male', 'Manager', '10121995', '379145632000', '14569855', 'Bhandup', '03/11/23 03:21:34 PM');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `beneficiary_1011742`
+-- Table structure for table `beneficiary_101171011745`
 --
 
-CREATE TABLE `beneficiary_1011742` (
+CREATE TABLE `beneficiary_101171011745` (
   `id` int(255) NOT NULL,
   `Beneficiary_name` varchar(255) DEFAULT NULL,
   `Beneficiary_ac_no` varchar(255) DEFAULT NULL,
   `IFSC_code` varchar(255) DEFAULT NULL,
   `Account_type` varchar(255) DEFAULT NULL,
-  `Status` varchar(255) DEFAULT NULL,
+  `secure_code` varchar(255) DEFAULT NULL,
   `Date_added` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `beneficiary_1011742`
+-- Dumping data for table `beneficiary_101171011745`
 --
 
+INSERT INTO `beneficiary_101171011745` (`id`, `Beneficiary_name`, `Beneficiary_ac_no`, `IFSC_code`, `Account_type`, `secure_code`, `Date_added`) VALUES
+(1, 'Riyaz', '1011491011304', '1011', 'Saving', 'hello', '05/07/24 11:08:04 PM');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `beneficiary_1011768`
+-- Table structure for table `beneficiary_1011491011304`
 --
 
-CREATE TABLE `beneficiary_1011768` (
+CREATE TABLE `beneficiary_1011491011304` (
   `id` int(255) NOT NULL,
   `Beneficiary_name` varchar(255) DEFAULT NULL,
   `Beneficiary_ac_no` varchar(255) DEFAULT NULL,
   `IFSC_code` varchar(255) DEFAULT NULL,
   `Account_type` varchar(255) DEFAULT NULL,
-  `Status` varchar(255) DEFAULT NULL,
+  `secure_code` varchar(255) DEFAULT NULL,
   `Date_added` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `beneficiary_1011491011304`
+--
+
+INSERT INTO `beneficiary_1011491011304` (`id`, `Beneficiary_name`, `Beneficiary_ac_no`, `IFSC_code`, `Account_type`, `secure_code`, `Date_added`) VALUES
+(1, 'MS Dhoni', '101171011745', '1011', 'Saving', 'ipl', '04/07/24 11:46:22 PM');
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `beneficiary_1011950`
---
-
-CREATE TABLE `beneficiary_1011950` (
-  `id` int(255) NOT NULL,
-  `Beneficiary_name` varchar(255) DEFAULT NULL,
-  `Beneficiary_ac_no` varchar(255) DEFAULT NULL,
-  `IFSC_code` varchar(255) DEFAULT NULL,
-  `Account_type` varchar(255) DEFAULT NULL,
-  `Status` varchar(255) DEFAULT NULL,
-  `Date_added` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `beneficiary_1011950`
---
-
 
 --
 -- Table structure for table `cheque_book`
@@ -270,163 +173,15 @@ CREATE TABLE `cheque_book` (
   `cust_name` varchar(255) NOT NULL,
   `account_no` int(10) NOT NULL,
   `cheque_book_status` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `cheque_book`
---
-
-
---
--- Table structure for table `passbook_1010112`
---
-
-CREATE TABLE `passbook_1010112` (
-  `id` int(255) NOT NULL,
-  `Transaction_id` varchar(255) DEFAULT NULL,
-  `Transaction_date` varchar(255) DEFAULT NULL,
-  `Description` varchar(255) DEFAULT NULL,
-  `Cr_amount` varchar(255) DEFAULT NULL,
-  `Dr_amount` varchar(255) DEFAULT NULL,
-  `Net_Balance` varchar(255) DEFAULT NULL,
-  `Remark` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table `passbook_1010112`
---
-
-
-
---
--- Table structure for table `passbook_1011046`
---
-
-CREATE TABLE `passbook_1011046` (
-  `id` int(255) NOT NULL,
-  `Transaction_id` varchar(255) DEFAULT NULL,
-  `Transaction_date` varchar(255) DEFAULT NULL,
-  `Description` varchar(255) DEFAULT NULL,
-  `Cr_amount` varchar(255) DEFAULT NULL,
-  `Dr_amount` varchar(255) DEFAULT NULL,
-  `Net_Balance` varchar(255) DEFAULT NULL,
-  `Remark` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table `passbook_1011046`
---
-
-
---
--- Table structure for table `passbook_1011426`
---
-
-CREATE TABLE `passbook_1011426` (
-  `id` int(255) NOT NULL,
-  `Transaction_id` varchar(255) DEFAULT NULL,
-  `Transaction_date` varchar(255) DEFAULT NULL,
-  `Description` varchar(255) DEFAULT NULL,
-  `Cr_amount` varchar(255) DEFAULT NULL,
-  `Dr_amount` varchar(255) DEFAULT NULL,
-  `Net_Balance` varchar(255) DEFAULT NULL,
-  `Remark` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `passbook_1011426`
---
-
-
-
---
--- Table structure for table `passbook_1011439`
---
-
-CREATE TABLE `passbook_1011439` (
-  `id` int(255) NOT NULL,
-  `Transaction_id` varchar(255) DEFAULT NULL,
-  `Transaction_date` varchar(255) DEFAULT NULL,
-  `Description` varchar(255) DEFAULT NULL,
-  `Cr_amount` varchar(255) DEFAULT NULL,
-  `Dr_amount` varchar(255) DEFAULT NULL,
-  `Net_Balance` varchar(255) DEFAULT NULL,
-  `Remark` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `passbook_1011439`
---
-
-
---
--- Table structure for table `passbook_1011722`
---
-
-CREATE TABLE `passbook_1011722` (
-  `id` int(255) NOT NULL,
-  `Transaction_id` varchar(255) DEFAULT NULL,
-  `Transaction_date` varchar(255) DEFAULT NULL,
-  `Description` varchar(255) DEFAULT NULL,
-  `Cr_amount` varchar(255) DEFAULT NULL,
-  `Dr_amount` varchar(255) DEFAULT NULL,
-  `Net_Balance` varchar(255) DEFAULT NULL,
-  `Remark` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `passbook_1011722`
---
-
-
---
--- Table structure for table `passbook_1011742`
---
-
-CREATE TABLE `passbook_1011742` (
-  `id` int(255) NOT NULL,
-  `Transaction_id` varchar(255) DEFAULT NULL,
-  `Transaction_date` varchar(255) DEFAULT NULL,
-  `Description` varchar(255) DEFAULT NULL,
-  `Cr_amount` varchar(255) DEFAULT NULL,
-  `Dr_amount` varchar(255) DEFAULT NULL,
-  `Net_Balance` varchar(255) DEFAULT NULL,
-  `Remark` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `passbook_1011742`
---
-
-
-
---
--- Table structure for table `passbook_1011768`
---
-
-CREATE TABLE `passbook_1011768` (
-  `id` int(255) NOT NULL,
-  `Transaction_id` varchar(255) DEFAULT NULL,
-  `Transaction_date` varchar(255) DEFAULT NULL,
-  `Description` varchar(255) DEFAULT NULL,
-  `Cr_amount` varchar(255) DEFAULT NULL,
-  `Dr_amount` varchar(255) DEFAULT NULL,
-  `Net_Balance` varchar(255) DEFAULT NULL,
-  `Remark` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `passbook_1011768`
---
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `passbook_1011950`
+-- Table structure for table `passbook_1011304`
 --
 
-CREATE TABLE `passbook_1011950` (
+CREATE TABLE `passbook_1011304` (
   `id` int(255) NOT NULL,
   `Transaction_id` varchar(255) DEFAULT NULL,
   `Transaction_date` varchar(255) DEFAULT NULL,
@@ -435,13 +190,48 @@ CREATE TABLE `passbook_1011950` (
   `Dr_amount` varchar(255) DEFAULT NULL,
   `Net_Balance` varchar(255) DEFAULT NULL,
   `Remark` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `passbook_1011950`
+-- Dumping data for table `passbook_1011304`
 --
 
+INSERT INTO `passbook_1011304` (`id`, `Transaction_id`, `Transaction_date`, `Description`, `Cr_amount`, `Dr_amount`, `Net_Balance`, `Remark`) VALUES
+(1, '236835081', '04/07/24 09:03:11 PM', 'Account Opening', '0', '0', '0', NULL),
+(2, '921633232', '04/07/24 09:04:02 PM', 'Cash Deposit/921633232', '10000', '0', '10000', 'Cash Deposit'),
+(3, '266570540', '2024-07-05 01:14:55', 'MS Dhoni/101171011745/1011', '0', '50.00', '9950', 'Transferred'),
+(4, '763326397', '2024-07-05 18:16:05', 'MS Dhoni/101171011745/1011', '0', '7.00', '9943', 'Transferred'),
+(5, '713203823', '2024-07-05 23:23:14', 'MS Dhoni/101171011745/1011', '100.00', '0', '10043', 'Received');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `passbook_1011745`
+--
+
+CREATE TABLE `passbook_1011745` (
+  `id` int(255) NOT NULL,
+  `Transaction_id` varchar(255) DEFAULT NULL,
+  `Transaction_date` varchar(255) DEFAULT NULL,
+  `Description` varchar(255) DEFAULT NULL,
+  `Cr_amount` varchar(255) DEFAULT NULL,
+  `Dr_amount` varchar(255) DEFAULT NULL,
+  `Net_Balance` varchar(255) DEFAULT NULL,
+  `Remark` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `passbook_1011745`
+--
+
+INSERT INTO `passbook_1011745` (`id`, `Transaction_id`, `Transaction_date`, `Description`, `Cr_amount`, `Dr_amount`, `Net_Balance`, `Remark`) VALUES
+(1, '703186768', '04/07/24 08:55:06 PM', 'Account Opening', '0', '0', '0', NULL),
+(2, '266570540', '2024-07-05 01:14:55', 'Riyaz/1011491011304/1011', '50.00', '0', '50', 'Received'),
+(3, '763326397', '2024-07-05 18:16:05', 'Riyaz/1011491011304/1011', '7.00', '0', '57', 'Received'),
+(4, '475206877', '05/07/24 11:09:02 PM', 'Cash Deposit/475206877', '10000', '0', '10057', 'Cash Deposit'),
+(5, '713203823', '2024-07-05 23:23:14', 'Riyaz/1011491011304/1011', '0', '100.00', '9957', 'Transferred');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `pending_accounts`
@@ -468,7 +258,39 @@ CREATE TABLE `pending_accounts` (
   `Nominee_ac_no` varchar(255) DEFAULT NULL,
   `Account_type` varchar(50) DEFAULT NULL,
   `Application_Date` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pending_transfers_101171011745`
+--
+
+CREATE TABLE `pending_transfers_101171011745` (
+  `id` int(255) NOT NULL,
+  `Transaction_id` varchar(255) DEFAULT NULL,
+  `Beneficiary_name` varchar(255) DEFAULT NULL,
+  `Beneficiary_ac_no` varchar(255) DEFAULT NULL,
+  `Amount` decimal(10,2) DEFAULT NULL,
+  `status` enum('pending','completed') DEFAULT 'pending',
+  `Date_added` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pending_transfers_1011491011304`
+--
+
+CREATE TABLE `pending_transfers_1011491011304` (
+  `id` int(255) NOT NULL,
+  `Transaction_id` varchar(255) DEFAULT NULL,
+  `Beneficiary_name` varchar(255) DEFAULT NULL,
+  `Beneficiary_ac_no` varchar(255) DEFAULT NULL,
+  `Amount` decimal(10,2) DEFAULT NULL,
+  `status` enum('pending','completed') DEFAULT 'pending',
+  `Date_added` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -489,13 +311,18 @@ CREATE TABLE `staff` (
   `pwd` varchar(32) NOT NULL,
   `gender` char(1) NOT NULL,
   `lastlogin` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `staff`
 --
 
+INSERT INTO `staff` (`id`, `name`, `dob`, `relationship`, `department`, `doj`, `address`, `mobile`, `email`, `pwd`, `gender`, `lastlogin`) VALUES
+(1, 'Nidhi', '1990-05-05', 'married', 'revenue', '1999-11-11', '123 SEctor 15', '7854444444', 'etttt@gmail.com', 'qwerty', 'M', '2015-01-11 10:29:48'),
+(2, 'Piyush M', '1998-08-21', 'unmarried', 'revenue', '2013-08-03', '123 Sector 16', '7410000020', 'rlbb@gmail.com', 'qweer', 'M', '2015-01-10 21:22:59');
 
+--
+-- Indexes for dumped tables
 --
 
 --
@@ -517,51 +344,15 @@ ALTER TABLE `bank_staff`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `beneficiary_1010112`
+-- Indexes for table `beneficiary_101171011745`
 --
-ALTER TABLE `beneficiary_1010112`
+ALTER TABLE `beneficiary_101171011745`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `beneficiary_1011046`
+-- Indexes for table `beneficiary_1011491011304`
 --
-ALTER TABLE `beneficiary_1011046`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `beneficiary_1011426`
---
-ALTER TABLE `beneficiary_1011426`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `beneficiary_1011439`
---
-ALTER TABLE `beneficiary_1011439`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `beneficiary_1011722`
---
-ALTER TABLE `beneficiary_1011722`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `beneficiary_1011742`
---
-ALTER TABLE `beneficiary_1011742`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `beneficiary_1011768`
---
-ALTER TABLE `beneficiary_1011768`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `beneficiary_1011950`
---
-ALTER TABLE `beneficiary_1011950`
+ALTER TABLE `beneficiary_1011491011304`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -571,58 +362,28 @@ ALTER TABLE `cheque_book`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `passbook_1010112`
+-- Indexes for table `passbook_1011304`
 --
-ALTER TABLE `passbook_1010112`
+ALTER TABLE `passbook_1011304`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `passbook_1011046`
+-- Indexes for table `passbook_1011745`
 --
-ALTER TABLE `passbook_1011046`
+ALTER TABLE `passbook_1011745`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `passbook_1011426`
+-- Indexes for table `pending_transfers_101171011745`
 --
-ALTER TABLE `passbook_1011426`
+ALTER TABLE `pending_transfers_101171011745`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `passbook_1011439`
+-- Indexes for table `pending_transfers_1011491011304`
 --
-ALTER TABLE `passbook_1011439`
+ALTER TABLE `pending_transfers_1011491011304`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `passbook_1011722`
---
-ALTER TABLE `passbook_1011722`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `passbook_1011742`
---
-ALTER TABLE `passbook_1011742`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `passbook_1011768`
---
-ALTER TABLE `passbook_1011768`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `passbook_1011950`
---
-ALTER TABLE `passbook_1011950`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `pending_accounts`
---
-ALTER TABLE `pending_accounts`
-  ADD PRIMARY KEY (`Application_no`);
 
 --
 -- Indexes for table `staff`
@@ -640,106 +401,68 @@ ALTER TABLE `staff`
 --
 ALTER TABLE `atm`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `bank_customers`
 --
 ALTER TABLE `bank_customers`
-  MODIFY `Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `bank_staff`
 --
 ALTER TABLE `bank_staff`
   MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- AUTO_INCREMENT for table `beneficiary_1010112`
+-- AUTO_INCREMENT for table `beneficiary_101171011745`
 --
-ALTER TABLE `beneficiary_1010112`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `beneficiary_1011046`
---
-ALTER TABLE `beneficiary_1011046`
+ALTER TABLE `beneficiary_101171011745`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- AUTO_INCREMENT for table `beneficiary_1011426`
+-- AUTO_INCREMENT for table `beneficiary_1011491011304`
 --
-ALTER TABLE `beneficiary_1011426`
+ALTER TABLE `beneficiary_1011491011304`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `beneficiary_1011439`
---
-ALTER TABLE `beneficiary_1011439`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `beneficiary_1011722`
---
-ALTER TABLE `beneficiary_1011722`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `beneficiary_1011742`
---
-ALTER TABLE `beneficiary_1011742`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `beneficiary_1011768`
---
-ALTER TABLE `beneficiary_1011768`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `beneficiary_1011950`
---
-ALTER TABLE `beneficiary_1011950`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `cheque_book`
 --
 ALTER TABLE `cheque_book`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
--- AUTO_INCREMENT for table `passbook_1010112`
+-- AUTO_INCREMENT for table `passbook_1011304`
 --
-ALTER TABLE `passbook_1010112`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `passbook_1011304`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT for table `passbook_1011046`
+-- AUTO_INCREMENT for table `passbook_1011745`
 --
-ALTER TABLE `passbook_1011046`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `passbook_1011745`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT for table `passbook_1011426`
+-- AUTO_INCREMENT for table `pending_transfers_101171011745`
 --
-ALTER TABLE `passbook_1011426`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `pending_transfers_101171011745`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `passbook_1011439`
+-- AUTO_INCREMENT for table `pending_transfers_1011491011304`
 --
-ALTER TABLE `passbook_1011439`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT for table `passbook_1011722`
---
-ALTER TABLE `passbook_1011722`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `passbook_1011742`
---
-ALTER TABLE `passbook_1011742`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `passbook_1011768`
---
-ALTER TABLE `passbook_1011768`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `passbook_1011950`
---
-ALTER TABLE `passbook_1011950`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `pending_transfers_1011491011304`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
