@@ -1,7 +1,7 @@
 ### Securexx
 
 ## Overview
-This Securexx is a web-based application designed to streamline banking operations. It features functionalities such as customer registration, fund transfers, beneficiary management, and secure transactions. One of its standout features is the ability for users to securely receive money with a two-step verification process. This ensures enhanced security by requiring the recipient to enter a secure code set by the sender.
+The Securexx is a web-based application designed to streamline banking operations. It features functionalities such as customer registration, fund transfers, beneficiary management, and secure transactions. One of its standout features is the ability for users to securely receive money with a two-step verification process. This ensures enhanced security by requiring the recipient to enter a secure code set by the sender.
 
 ## Distinct Features
 - **Receiving Money**: Unique feature allowing customers to receive money through a secure process. The sender initializes the payment, and the receiver must enter a secure code set by the sender to complete the transaction.
